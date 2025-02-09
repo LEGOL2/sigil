@@ -1,6 +1,7 @@
-#include<iostream>
+#include <iostream>
 #include <sigil.hpp>
 
 int main() {
-    printf("Hello World %i \n", foo());
+    Sigil engine(800, 640, "Sigil Engine");
+    engine.Render();
 }
