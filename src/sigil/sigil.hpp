@@ -7,7 +7,9 @@ class Sigil {
     Sigil(size_t width, size_t height, const char* title);
     ~Sigil();
 
-    void Render();
+    bool WindowShouldClose();
+    void SwapBuffers();
+    void PollEvents();
 
    private:
     void Terminate(const char* description);

@@ -28,6 +28,8 @@ Sigil::Sigil(size_t width, size_t height, const char* title) : width(width), hei
 
     glfwSetKeyCallback(window, KeyCallback);
     glfwSetFramebufferSizeCallback(window, ResizeCallback);
+
+    glfwSwapInterval(1);
 }
 
 Sigil::~Sigil() {
@@ -35,15 +37,11 @@ Sigil::~Sigil() {
     glfwTerminate();
 }
 
-void Sigil::Render() {
-    glfwSwapInterval(1);
-    glClearColor(0.1, 0.57, 0.86, 1.0);
-    while (!glfwWindowShouldClose(window)) {
-        glClear(GL_COLOR_BUFFER_BIT);
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
-}
+bool Sigil::WindowShouldClose() { return glfwWindowShouldClose(window); }
+
+void Sigil::SwapBuffers() { glfwSwapBuffers(window); }
+
+void Sigil::PollEvents() { glfwPollEvents(); }
 
 void Sigil::Terminate(const char* description) {
     fprintf(stderr, "Error: %s\n", description);
